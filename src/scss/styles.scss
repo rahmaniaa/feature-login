@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;700&family=Noto+Sans:wght@400;700&display=swap');
+
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'EB Garamond', 'Noto Sans', serif, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Noto Sans';
+  font-weight: 700;
+}
+
+p,
+a,
+button,
+input,
+textarea,
+li {
+  font-family: 'Noto Sans';
+}
+
+@import url('./pages/Homepage.scss');
+
+@import url('./components/Card/CardEven.scss');
+@import url('./components/Navbar.scss');
+@import url('./components/Hero.scss');
+@import url('./components/Card/SingleRowCardList.scss');
+@import url('./components/Footer.scss');
+@import url('./components/Forms/Search.scss');
+@import url('./components/Button/Button.scss');
+@import url('./components/Forms/FormLogin.scss');

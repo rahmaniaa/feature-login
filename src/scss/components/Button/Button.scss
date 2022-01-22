@@ -1,0 +1,12 @@
+@import '../../root.scss';
+
+.btn {
+    width: 112px;
+    height: 40px;
+    background-color: $brand-primary;
+    color: $bw-white; 
+    border-radius: 20px;
+    font-size: 16px;
+    font-weight: 700;
+    text-align: center;
+}

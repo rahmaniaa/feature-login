@@ -1,0 +1,41 @@
+@import '../root.scss';
+
+.hero {
+  width: 100%;
+  height: 100vh;
+  background-image: url('../../assets/image/Hero-Bg.png');
+  background-position: center;
+  background-size: cover;
+
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    padding: 0 24px;
+
+    .title {
+      flex: 3;
+      color: $bw-white;
+
+      h1 {
+        font-size: 3vw;
+        span {
+          color: $brand-secondary;
+        }
+      }
+    }
+
+    .input-search {
+      flex: 5;
+      display: flex;
+      justify-content: end;
+
+      h1 {
+        text-align: right;
+        color: $brand-secondary;
+        font-size: 3vw;
+      }
+    }
+  }
+}
