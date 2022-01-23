@@ -1,49 +1,33 @@
 import { useFormik } from 'formik';
-import * as Yup from 'yup';
 import { Form, Button } from 'react-bootstrap';
+import *as Yup from 'yup';
 
 export default function FormLogin () {
-
-    // const validate = (values, props /* only available when using withFormik */) => {
-    //     const errors = {};
-      
-    //     if (!values.email) {
-    //       errors.email = 'Required';
-    //     } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-    //       errors.email = 'Invalid email address';
-    //     }
-      
-    //     return errors;
-    //   };
-
-    const doregister = (values) => {
-        console.log('form values', values);
-        setTimeout(() => {
-            formik.setSubmitting(false);
-            formik.resetForm();
-        }, 2000);
-    }
-
     const formik = useFormik({
-        // initial values
-        initialValues: {
-            email: "",
-            password: "",
-        },
-        // validation schema
+        initialValues:{
+            email:"",
+            password:"",
+        },  
+
         validationSchema: Yup.object({
-            email: Yup.string(),
-            password: Yup.string()
-            .required()
-            .min(25, 'Should more than 25 characters')
-            .matches(/[a-z]/g, 'Should contain at least 1 lowercase')
-            .matches(/[A-Z]/g, 'Should contain at least 1 uppercase')
-            .matches(/[0-9]/g, 'Should contain at least 1 number')
-            .matches(/^\S*$/, 'Should not contain spaces'),
+            email:Yup.string()
+                .email("Invalid email address")
+                .required("email harus diisi"),
+            password:Yup.string()
+                .required('Please Enter your password')
+                .matches(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,}$/,
+                "Must Contain 6 Characters, One Uppercase, One Lowercase, One Number and one special case Character"
+            ),
+
         }),
-        onSubmit: doregister
-    });
-    console.log(formik);
+
+        onSubmit:values => {
+            alert(JSON.stringify(values, null, 2));
+        },
+        
+    })
+
+
     return (
       <div className="d-flex justify-content-center align-items-center vh-100">
         <div className="form-login">
@@ -55,7 +39,9 @@ export default function FormLogin () {
                         type="text"
                         placeholder="Email"
                         name="email"
-                        {...formik.getFieldProps('email')}
+                        
+                        // {...formik.getFieldProps('email')}
+                        onChange={formik.handleChange}
                     />
                     {formik.touched.email 
                       && formik.errors.email 
@@ -70,7 +56,9 @@ export default function FormLogin () {
                         type="password"
                         placeholder="Password"
                         name="password"
-                        {...formik.getFieldProps('password')}
+                        
+                        // {...formik.getFieldProps('password')}
+                        onChange={formik.handleChange}
                     />
                     {formik.touched.password 
                       && formik.errors.password 
